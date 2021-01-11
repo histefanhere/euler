@@ -3,9 +3,12 @@
 
 import math
 
-num = str(math.factorial(100))
+def solve():
+    num = str(math.factorial(100))
+    total = sum(int(x) for x in num)
 
-total = sum(int(x) for x in num)
+    return total
 
-print(total)
-   
+if __name__ == "__main__":
+    print(solve())
+

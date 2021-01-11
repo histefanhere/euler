@@ -73,8 +73,13 @@ def num_to_str(n):
 
     return " ".join(output)
 
-letters = 0
-for i in range(1, 1001):
-    letters += len(list(char for char in num_to_str(i) if char != " "))
+def solve():
+    letters = 0
+    for i in range(1, 1001):
+        letters += len(list(char for char in num_to_str(i) if char != " "))
 
-print(letters)
+    return letters
+
+if __name__ == "__main__":
+    print(solve())
+

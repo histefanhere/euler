@@ -13,12 +13,17 @@ with open(filename, "r") as file:
 
 rows = len(nums)
 
-for i in range(rows-2, -1, -1):
-    # goes from second to last row to first row
+def solve():
+    for i in range(rows-2, -1, -1):
+        # goes from second to last row to first row
 
-    for j in range(i+1):
-        # We should consider nums[i+1][j] and nums[i+1][j+1]
+        for j in range(i+1):
+            # We should consider nums[i+1][j] and nums[i+1][j+1]
 
-        nums[i][j] += max(nums[i+1][j], nums[i+1][j+1])
+            nums[i][j] += max(nums[i+1][j], nums[i+1][j+1])
 
-print(nums[0][0])
+    return nums[0][0]
+
+if __name__ == "__main__":
+    print(solve())
+

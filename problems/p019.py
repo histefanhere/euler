@@ -38,30 +38,34 @@ def get_days(month, year):
 # week goes from monday to sunday, 0 to 6.
 # sunday == 6
 
-year = 1900
-month = 1
-dow = 0
+def solve():
+    year = 1900
+    month = 1
+    dow = 0
 
-sundays_on_first_of_month = 0
+    sundays_on_first_of_month = 0
 
-while True:
-    # iterate
-    days_in_month = get_days(month, year)
+    while True:
+        # iterate
+        days_in_month = get_days(month, year)
 
-    dow = (dow + days_in_month) % 7
+        dow = (dow + days_in_month) % 7
 
-    month = month + 1
+        month = month + 1
 
-    if month == 13:
-        month = 1
-        year += 1
+        if month == 13:
+            month = 1
+            year += 1
 
-    if year >= 1901 and year <= 2000:
-        if dow == 6:
-            sundays_on_first_of_month += 1
+        if year >= 1901 and year <= 2000:
+            if dow == 6:
+                sundays_on_first_of_month += 1
 
-    if year > 2000:
-        break
+        if year > 2000:
+            break
+    
+    return sundays_on_first_of_month
 
-print(sundays_on_first_of_month)
+if __name__ == "__main__":
+    print(solve())
 

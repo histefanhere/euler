@@ -13,14 +13,17 @@ with open(util.get_resource_path("p022_names.txt"), "r") as file:
 
 names.sort()   
 
-def get_letter_score(letter):
-    return ord(letter) - ord('A') + 1
+def solve():
+    def get_letter_score(letter):
+        return ord(letter) - ord('A') + 1
 
-total_scores = 0
+    total_scores = 0
 
-for i, name in enumerate(names):
-    score = (i + 1) * sum(get_letter_score(letter) for letter in name)
+    for i, name in enumerate(names):
+        score = (i + 1) * sum(get_letter_score(letter) for letter in name)
 
-    total_scores += score
+        total_scores += score
     
-print(total_scores)
+if __name__ == "__main__":
+    print(solve())
+

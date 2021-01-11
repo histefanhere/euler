@@ -1,8 +1,6 @@
 # TODO
 
-- template file / python script for generating new project scripts
-
-- guess the project number from the main filename (__main__.__file__)
+- write README
 
 - better print the time interval, especially for very small intervals
 
@@ -12,5 +10,9 @@
 
 # COMPLETED
 
+- template file / python script for generating new project scripts
 
 # TRASHED
+
+- guess the project number from the main filename (__main__.__file__) => project number (and title) are now stored in the doc string
+
