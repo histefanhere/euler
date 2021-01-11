@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-# 14/08/2020
-
-import euler
-euler.begin(13, "Large sum")
+"""Project Euler #13 - Large sum (14/08/2020)"""
 
 numbers = "37107287533902102798797998220837590246510135740250 \
 46376937677490009712648124896970078050417018260538 \
@@ -107,4 +104,4 @@ numbers = "37107287533902102798797998220837590246510135740250 \
 
 n = [int(num) for num in numbers.split()]
 
-euler.end(sum(n))
+print(sum(n))

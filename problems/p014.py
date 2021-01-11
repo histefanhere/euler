@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-# 14/08/2020
-
-import euler
-euler.begin(14, "Longest Collatz Sequence")
+"""Project Euler #14 - Longest Collatz sequence (14/08/2020)"""
 
 def iterate(n):
     if n % 2 == 0:
@@ -34,4 +31,4 @@ for i in range(1_000_000, 2, -1):
         longest_chain_number = i
         longest_chain_length = chain_length
 
-euler.end(longest_chain_number, longest_chain_length)
+print(longest_chain_number, longest_chain_length)

@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-# 14/08/2020
-
-import euler
-euler.begin(11, "Largest Product in a grid")
+"""Project Euler #11 - Largest product in a grid (14/08/2020)"""
 
 numbers_string = "08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08 \
 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00 \
@@ -52,5 +49,5 @@ for x in range(20):
             if product(points) > product(largest_product):
                 largest_product = points
 
-euler.end(largest_product, product(largest_product))
+print(product(largest_product))
 

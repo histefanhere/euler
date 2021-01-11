@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-# 24/11/2020
+"""Project Euler #22 - Names scores (24/11/2020)"""
 
-import euler
-euler.begin(22, "Names Scores")
+import util
 
 names = []
 
-with open("resources/p022_names.txt", "r") as file:
+with open(util.get_resource_path("p022_names.txt"), "r") as file:
     raw_names = file.read().split(",")
 
     for name in raw_names:
@@ -24,4 +23,4 @@ for i, name in enumerate(names):
 
     total_scores += score
     
-euler.end(total_scores)
+print(total_scores)

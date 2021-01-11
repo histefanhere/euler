@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-# 23/11/2020
-
-import euler
-euler.begin(15, "Lattice Paths")
+"""Project Euler #15 - Lattice paths (23/11/2020)"""
 
 import math
 
@@ -34,4 +31,4 @@ def calculate_grid_paths(size):
 
     return math.factorial(2 * size) / ( math.factorial(size) ) ** 2
 
-euler.end(calculate_grid_paths(20))
+print(calculate_grid_paths(20))

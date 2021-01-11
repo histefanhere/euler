@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-# 23/11/2020
-
-import euler
-euler.begin(17, "Number Letter Counts")
+"""Project Euler #17 - Number letter counts (23/11/2020)"""
 
 import math
 
@@ -80,4 +77,4 @@ letters = 0
 for i in range(1, 1001):
     letters += len(list(char for char in num_to_str(i) if char != " "))
 
-euler.end(letters)
+print(letters)

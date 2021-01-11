@@ -1,9 +1,9 @@
-# Maximum Path Sum II
-# started: 23/11/2020
-# finished: 23/11/2020
-# time to complete: 20m
+#!/usr/bin/env python3
+"""Project Euler #18 - Maximum path sum I (23/11/2020)"""
 
-filename = "resources/p067_triangle.txt"
+import util
+
+filename = util.get_resource_path("p018_triangle.txt")
 
 nums = []
 

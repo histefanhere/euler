@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-# 24/11/2020
-
-import euler
-euler.begin(19, "Counting Sundays")
+"""Project Euler #19 - Counting Sundays (24/11/2020)"""
 
 # 1 Jan 1900 was monday
 # thirty days in sep, april, june, nov
@@ -66,5 +63,5 @@ while True:
     if year > 2000:
         break
 
-euler.end(sundays_on_first_of_month)
+print(sundays_on_first_of_month)
 

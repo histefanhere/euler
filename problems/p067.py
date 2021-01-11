@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
-# 23/11/2020
+"""Project Euler #67 - Maximum path sum II (23/11/2020)"""
 
-import euler
-euler.begin(18, "Maximum Path Sum I")
-
-filename = "resources/p018_triangle.txt"
+import util
+filename = util.get_resource_path('p067_triangle.txt')
 
 nums = []
 
@@ -15,7 +13,6 @@ with open(filename, "r") as file:
 
 rows = len(nums)
 
-
 for i in range(rows-2, -1, -1):
     # goes from second to last row to first row
 
@@ -24,4 +21,4 @@ for i in range(rows-2, -1, -1):
 
         nums[i][j] += max(nums[i+1][j], nums[i+1][j+1])
 
-euler.end(nums[0][0])
+print(nums[0][0])

@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+
+# run a project euler script from the given ID
+import argparse
+import contextlib, io
+import importlib
+import sys
+import datetime as dt
+import humanize
+
+parser = argparse.ArgumentParser(description="Run a Project Euler project")
+
+parser.add_argument('project', type=int, help='project ID to be executed')
+args = parser.parse_args()
+
+filename = 'problems.p{:0>3}'.format(args.project)
+
+print(f"PROJECT #{args.project}")
+
+# This fixes `util` not being able to be imported
+sys.path.append('problems')
+
+# Here we capture the stdout of the project script, which we import via importlib
+f = io.StringIO()
+with contextlib.redirect_stdout(f):
+
+    start_time = dt.datetime.now()
+    importlib.import_module(filename)
+    end_time = dt.datetime.now()
+
+# trim newline
+output = f.getvalue()[:-1]
+delta = end_time - start_time
+
+print("\nDone!")
+print("Time elapsed:", humanize.precisedelta(delta))
+print("Result:", output)
+
