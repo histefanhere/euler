@@ -16,7 +16,7 @@ From the [Project Euler](https://projecteuler.net) website,
 
 ## Usage
 
-`generate.py` is used to generate template scripts when you start coding a new problem - all it needs to be supplied with is the problem ID and title. With these it generates a file like this one:
+`generate.py` is used to generate template scripts when you start coding a new problem - all it needs to be supplied with is the problem ID. With these it generates a file like this one:
 
 ```
 euler/problems$ cat p001.py

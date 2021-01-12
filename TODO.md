@@ -6,14 +6,13 @@
 
 - put all resources in their respective scripts, no need for resource file parsing
 
-- webscrape for problem name
-
-- constant for problem dir
 
 # COMPLETED
 
 - template file / python script for generating new project scripts
 - if euler is ran, show how many projects have been completed / which is next to do
+- webscrape for problem name
+- constant for problem dir
 
 # TRASHED
 

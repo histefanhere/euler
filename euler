@@ -8,6 +8,8 @@ import datetime as dt
 import humanize
 import glob
 
+PROBLEMS_DIR = "problems"
+
 def id_to_module(project_id):
     """Given a ID, convert it to a module"""
     return 'p{:0>3}'.format(project_id)
@@ -15,16 +17,16 @@ def id_to_module(project_id):
 
 # Parse the ID from the command line via `argparse`
 parser = argparse.ArgumentParser(description="Run a Project Euler project")
-parser.add_argument('project', nargs='?', type=int, help='project ID to be executed')
+parser.add_argument('id', nargs='?', type=int, help='project ID to be executed')
 args = parser.parse_args()
 
 
-if args.project is None:
+if args.id is None:
     # User ran the euler script with no arguments, meaning
     # They wish to simply see stats
 
     # Find all the problem script files
-    files = glob.glob('problems/p[0-9][0-9][0-9].py')
+    files = glob.glob(PROBLEMS_DIR + '/p[0-9][0-9][0-9].py')
     total_files = len(files)
 
     # Algorithm for finding the first problem without a script
@@ -44,10 +46,10 @@ if args.project is None:
     exit()
 
 
-modulename = 'problems.' + id_to_module(args.project)
+modulename = PROBLEMS_DIR + '.' + id_to_module(args.id)
 
 # This fixes `util` not being able to be imported
-sys.path.append('problems')
+sys.path.append(PROBLEMS_DIR)
 
 module = importlib.import_module(modulename)
 
