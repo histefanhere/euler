@@ -2,9 +2,6 @@
 
 - write README
 
-- better print the time interval, especially for very small intervals
-
-
 # COMPLETED
 
 - template file / python script for generating new project scripts
@@ -12,6 +9,7 @@
 - webscrape for problem name
 - constant for problem dir
 - put all resources in their respective scripts, no need for resource file parsing
+- better print the time interval, especially for very small intervals
 
 # TRASHED
 

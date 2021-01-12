@@ -3,10 +3,8 @@
 
 import argparse
 import importlib
-import sys
-import datetime as dt
-import humanize
 import glob
+from timeit import default_timer as timer
 
 PROBLEMS_DIR = "problems"
 
@@ -48,22 +46,36 @@ if args.id is None:
 
 modulename = PROBLEMS_DIR + '.' + id_to_module(args.id)
 
-# This fixes `util` not being able to be imported
-sys.path.append(PROBLEMS_DIR)
-
-module = importlib.import_module(modulename)
+try:
+    module = importlib.import_module(modulename)
+except ModuleNotFoundError:
+    print("That problem script doesn't exist!")
+    exit()
 
 # Show the title of the script, generated via `generate.py`
 print(module.__doc__)
 
 # Make sure we're only timing the solving of the problem
-start_time = dt.datetime.now()
+
+
+start_time = timer()
 output = module.solve()
-end_time = dt.datetime.now()
+end_time = timer()
 
 delta = end_time - start_time
 
 print("\nDone!")
-print("Time elapsed:", humanize.precisedelta(delta))
+if delta > 1:
+    # Program took more than one second
+    print(f"Time elapsed: {delta:.2f}s")
+elif delta > 1e-3:
+    # More than a millisecond (1/1000 of a second)
+    print(f"Time elapsed: {delta*1e3:.2f}ms")
+elif delta > 1e-6:
+    # More than a microsecond (1/1_000_000 of a second)
+    print(f"Time elapsed: {delta*1e6:.1f}µs")
+else:
+    # Less than a microsecond, so in the nanoseconds or even less - bruuuh
+    print(f"Time elapsed: {delta*1e9:.2f}ns")
 print("Result:", output)
 
