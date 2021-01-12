@@ -4,8 +4,6 @@
 
 - better print the time interval, especially for very small intervals
 
-- put all resources in their respective scripts, no need for resource file parsing
-
 
 # COMPLETED
 
@@ -13,6 +11,7 @@
 - if euler is ran, show how many projects have been completed / which is next to do
 - webscrape for problem name
 - constant for problem dir
+- put all resources in their respective scripts, no need for resource file parsing
 
 # TRASHED
 
