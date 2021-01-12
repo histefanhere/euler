@@ -2,11 +2,13 @@
 
 This is a repository of all my [Project Euler](https://projecteuler.net) problem solution scripts and a suite of tools made to make solving problems easier.
 
-**NOTE:** I _highly_ recommend to delete all my problem solutions in `problems`. The "Aha!" moment when you solve a problem is priceless, and glimpsing past a solution spoils that. The _only_ reason the problems are even uploaded to the repo in the first place is as a record-keeper for me.
+**WARNING: I _highly_ recommend to delete all my problem solutions in `problems`.** The "Aha!" moment when you solve a problem is priceless, and glimpsing past a solution will spoil that moment from you forever. The _only_ reason the problems are even uploaded to the repo in the first place is as a record-keeper for me.
 
 That being said, once you've already solved a problem seeing how others have done it might give you better insight into the maths and algorithms at play, so here the decision is yours.
 
 ## What is Project Euler?
+
+From the [Project Euler](https://projecteuler.net) website,
 
 > Project Euler is a series of challenging mathematical/computer programming problems that will require more than just mathematical insights to solve. Although mathematics will help you arrive at elegant and efficient methods, the use of a computer and programming skills will be required to solve most problems.
 > 
@@ -17,6 +19,7 @@ That being said, once you've already solved a problem seeing how others have don
 `generate.py` is used to generate template scripts when you start coding a new problem - all it needs to be supplied with is the problem ID and title. With these it generates a file like this one:
 
 ```
+euler/problems$ cat p001.py
 #!/usr/bin/env python3
 """Project Euler #1 - Multiples of 3 and 5 (11/01/2021)"""
 
@@ -38,7 +41,7 @@ euler/problems$ python3 p001.py
 42000
 ```
 
-Or using the `euler` tool which automatically times the script:
+Or using the `euler` tool by simply passing it the problem ID, which will also automatically time the script:
 ```
 euler$ ./euler 1
 Project Euler #1 - Multiples of 3 and 5 (11/01/2021)
