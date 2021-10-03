@@ -4,6 +4,7 @@
 import argparse
 import importlib
 import glob
+import os
 from timeit import default_timer as timer
 
 PROBLEMS_DIR = "problems"
@@ -31,7 +32,7 @@ if args.id is None:
     i = 0
     while True:
         i += 1
-        if 'problems/' + id_to_module(i) + '.py' not in files:
+        if os.path.join('problems', id_to_module(i) + '.py') not in files:
             break
 
     print("You've created scripts for {} Project Euler problem{}".format(
