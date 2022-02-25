@@ -1,39 +1,24 @@
 #!/usr/bin/env python3
 """Project Euler #14 - Longest Collatz sequence (14/08/2020)"""
 
-def solve():
-    def iterate(n):
-        if n % 2 == 0:
-            return n // 2
+def collatz(x):
+    n = 0
+    while x != 1:
+        n += 1
+        if x % 2 == 0:
+            x = x >> 1
         else:
-            return 3 * n + 1
+            x = 3 * x + 1
+    return n
 
-    longest_chain_number = 0
-    longest_chain_length = 0
+def solve():
+    l, ll = 0, 0
+    for i in range(1, 1_000_000):
+        ln = collatz(i)
+        if ln > ll:
+            l, ll = i, ln
 
-    ignore = []
-
-    for i in range(1_000_000, 2, -1):
-        if i in ignore:
-            continue
-        print(i)
-
-        chain_length = 1
-        n = i
-
-        while n != 1:
-            ignore.append(n)
-            n = iterate(n)
-            if n in ignore:
-                break   
-            chain_length += 1
-
-        if chain_length > longest_chain_length:
-            longest_chain_number = i
-            longest_chain_length = chain_length
-
-    return longest_chain_number
+    return l
 
 if __name__ == "__main__":
     print(solve())
-
