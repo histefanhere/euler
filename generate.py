@@ -12,6 +12,10 @@ import requests
 from bs4 import BeautifulSoup
 import argparse
 
+def id_to_module(project_id):
+    """Given a ID, convert it to a module"""
+    return 'p{:0>3}'.format(project_id)
+
 PROBLEMS_DIR = "problems"
 
 template = '''\
@@ -24,6 +28,23 @@ def solve():
 
 if __name__ == "__main__":
     print(solve())
+'''
+
+template_with_input = '''\
+#!/usr/bin/env python3
+"""Project Euler #{id} - {title} ({date})"""
+
+def get_input():
+    with open('resources/{module}_input.txt', 'r') as file:
+        # Interpret input here!
+        return None
+
+def solve(problem_input):
+    # Your code here!
+    pass
+
+if __name__ == "__main__":
+    print(solve(get_input()))
 '''
 
 parser = argparse.ArgumentParser(description="Generate template Project Euler scripts")
@@ -42,7 +63,7 @@ else:
         print("That isn't an integer!")
         exit()
 
-filename = PROBLEMS_DIR + '/p{:0>3}.py'.format(project_id)
+filename = f"{PROBLEMS_DIR}/{id_to_module(project_id)}.py"
 
 # Check if the file already exists - if it does, chances are it has some code in it.
 # And you don't want to be erasing code!
@@ -57,7 +78,11 @@ print("Problem #{} - {}".format(project_id, project_title))
 
 date = dt.datetime.now().strftime("%d/%m/%Y")
 
-content = template.format(id=project_id, title=project_title, date=date)
+requires_input = input("Does the problem need input from a file? [y/N] ")
+if requires_input != '' and requires_input.lower()[0] == 'y':
+    content = template_with_input.format(id=project_id, module=id_to_module(project_id), title=project_title, date=date)
+else:
+    content = template.format(id=project_id, title=project_title, date=date)
 
 # Create the file with the formatted template content
 with open(filename, 'w+') as file:

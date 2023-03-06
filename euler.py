@@ -13,6 +13,20 @@ def id_to_module(project_id):
     """Given a ID, convert it to a module"""
     return 'p{:0>3}'.format(project_id)
 
+def time_to_str(delta):
+    """Converts a seconds integer to a human-readable string"""
+    if delta > 1:
+        # Program took more than one second
+        return f"{delta:.2f}s"
+    elif delta > 1e-3:
+        # More than a millisecond (1/1000 of a second)
+        return f"{delta*1e3:.2f}ms"
+    elif delta > 1e-6:
+        # More than a microsecond (1/1_000_000 of a second)
+        return f"{delta*1e6:.1f}µs"
+    else:
+        # Less than a microsecond, so in the nanoseconds or even less - bruuuh
+        return f"{delta*1e9:.2f}ns"
 
 # Parse the ID from the command line via `argparse`
 parser = argparse.ArgumentParser(description="Run a Project Euler project")
@@ -57,26 +71,23 @@ except ModuleNotFoundError:
 print(module.__doc__)
 
 # Make sure we're only timing the solving of the problem
+solve_time = 0
+input_time = 0
+if hasattr(module, 'get_input'):
+    start_time = timer()
+    input = module.get_input()
+    input_time = timer() - start_time
 
+    start_time = timer()
+    output = module.solve(input)
+    solve_time = timer() - start_time
+else:
+    start_time = timer()
+    output = module.solve()
+    solve_time = timer() - start_time
 
-start_time = timer()
-output = module.solve()
-end_time = timer()
-
-delta = end_time - start_time
+time_string = f" ({time_to_str(input_time)} to read input)" if input_time > 0 else ''
 
 print("\nDone!")
-if delta > 1:
-    # Program took more than one second
-    print(f"Time elapsed: {delta:.2f}s")
-elif delta > 1e-3:
-    # More than a millisecond (1/1000 of a second)
-    print(f"Time elapsed: {delta*1e3:.2f}ms")
-elif delta > 1e-6:
-    # More than a microsecond (1/1_000_000 of a second)
-    print(f"Time elapsed: {delta*1e6:.1f}µs")
-else:
-    # Less than a microsecond, so in the nanoseconds or even less - bruuuh
-    print(f"Time elapsed: {delta*1e9:.2f}ns")
+print(f"Time elapsed: {time_to_str(solve_time + input_time)}{time_string}")
 print("Result:", output)
-
